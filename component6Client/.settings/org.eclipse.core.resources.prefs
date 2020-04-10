@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//src/model/Empolyee.java=UTF-8
+encoding//src/model/FindAllEmpolyee.java=UTF-8
+encoding//src/model/FindAllEmpolyeeResponse.java=UTF-8
+encoding//src/model/FindByid.java=UTF-8
+encoding//src/model/FindByidResponse.java=UTF-8
+encoding//src/model/InsertEmp.java=UTF-8
+encoding//src/model/InsertEmpResponse.java=UTF-8
+encoding//src/model/RemoveEmployee.java=UTF-8
+encoding//src/model/RemoveEmployeeResponse.java=UTF-8
+encoding//src/model/Soapservice.java=UTF-8
+encoding//src/model/SoapserviceService.java=UTF-8
+encoding//src/model/SoapserviceServiceLocator.java=UTF-8
+encoding//src/model/SoapserviceSoapBindingStub.java=UTF-8
+encoding//src/model/UpdateEmp.java=UTF-8
+encoding//src/model/UpdateEmpResponse.java=UTF-8

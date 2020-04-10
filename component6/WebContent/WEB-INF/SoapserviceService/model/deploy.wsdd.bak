@@ -1,0 +1,135 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from SoapserviceService WSDL service -->
+
+  <service name="Soapservice" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://model"/>
+      <parameter name="wsdlServiceElement" value="SoapserviceService"/>
+      <parameter name="schemaQualified" value="http://model"/>
+      <parameter name="wsdlServicePort" value="Soapservice"/>
+      <parameter name="className" value="model.SoapserviceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="Soapservice"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="findByid" qname="operNS:findByid" xmlns:operNS="http://model" returnQName="retNS:findByidReturn" xmlns:retNS="http://model" returnType="rtns:Empolyee" xmlns:rtns="http://model" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://model" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="updateEmp" qname="operNS:updateEmp" xmlns:operNS="http://model" returnQName="retNS:updateEmpReturn" xmlns:retNS="http://model" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:emp" xmlns:pns="http://model" type="tns:Empolyee" xmlns:tns="http://model"/>
+      </operation>
+      <operation name="insertEmp" qname="operNS:insertEmp" xmlns:operNS="http://model" returnQName="retNS:insertEmpReturn" xmlns:retNS="http://model" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:emp" xmlns:pns="http://model" type="tns:Empolyee" xmlns:tns="http://model"/>
+      </operation>
+      <operation name="removeEmployee" qname="operNS:removeEmployee" xmlns:operNS="http://model" returnQName="retNS:removeEmployeeReturn" xmlns:retNS="http://model" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://model" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="findAllEmpolyee" qname="operNS:findAllEmpolyee" xmlns:operNS="http://model" returnQName="retNS:findAllEmpolyeeReturn" xmlns:retNS="http://model" returnType="rtns:ArrayOf_xsd_anyType" xmlns:rtns="http://model" returnItemQName="tns:item" xmlns:tns="http://model" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="findByid insertEmp removeEmployee findAllEmpolyee updateEmp"/>
+
+      <typeMapping
+        xmlns:ns="http://model"
+        qname="ns:>findByidResponse"
+        type="java:model.FindByidResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://model"
+        qname="ns:>findByid"
+        type="java:model.FindByid"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://model"
+        qname="ns:>updateEmpResponse"
+        type="java:model.UpdateEmpResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://model"
+        qname="ns:>findAllEmpolyee"
+        type="java:model.FindAllEmpolyee"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://model"
+        qname="ns:ArrayOf_xsd_anyType"
+        type="java:java.lang.Object[]"
+        innerType="cmp-ns:anyType" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://model"
+        qname="ns:>insertEmp"
+        type="java:model.InsertEmp"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://model"
+        qname="ns:>findAllEmpolyeeResponse"
+        type="java:model.FindAllEmpolyeeResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://model"
+        qname="ns:>removeEmployee"
+        type="java:model.RemoveEmployee"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://model"
+        qname="ns:Empolyee"
+        type="java:model.Empolyee"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://model"
+        qname="ns:>insertEmpResponse"
+        type="java:model.InsertEmpResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://model"
+        qname="ns:>updateEmp"
+        type="java:model.UpdateEmp"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://model"
+        qname="ns:>removeEmployeeResponse"
+        type="java:model.RemoveEmployeeResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>
